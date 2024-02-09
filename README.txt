@@ -13,7 +13,7 @@ FILES:---------------------------
 "FlockAssignments_2019_20.RData"
 "GrpLearn_GbisMetas.RData"
 "GrpLearn_Networks4NBDA.RData"
-"GrpLearn_TestingResults.RData"
+"Flocks_TestingResults.RData"
 
 
 
@@ -41,6 +41,18 @@ Calculates three types of social networks used in network-based diffusion analys
 FILES
 ============================================================================================
 ============================================================================================
+
+
+-----------------------------------------
+FILE "Flocks_TestingResults.RData"
+-----------------------------------------
+This file contains cognitive testing performance data
+
+this file contains the following objects: 
+	- longTestingResults
+	- TestingResults
+	
+	
 
 
 -----------------------------------------
