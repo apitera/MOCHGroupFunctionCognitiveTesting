@@ -148,11 +148,10 @@ save(gbis, in.dat, metas, file = paste0(dat_path, "GrpLearn_GbisMetas.RData"))
 # 2) edges thresholded to only include edges occurring between birds assigned to the same feeder
 # 3) where all birds assigned to the same feeder have a '1' edge between them. --------
 inds_path <- "./icloud/LabThings/MOCHData/AnimalSocialNetworks/Assort/"
-inds_dat  <- "AssortElevIndDatETC.RData"
-targ_dat  <- "PreGrpTestingSetup/FlockAssignments_2019_20.RData" # has flock testing assignments
+inds_dat  <- "PreGrpTestingSetup/Flock_Assignments.RData" # has flock testing assignments
 
 load(paste0(inds_path, inds_dat))
-load(paste0(dat_path , targ_dat))
+
 
 networks4nbda <- function(which.dat.  ,
                           gbi.dat     ,
