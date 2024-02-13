@@ -166,19 +166,32 @@ Below are brief descriptions of the objects contained in this file:
 -new.old.ids - a dataframe of the new and old PIT-tag IDs as of 05 Sept. 2020 to be used for updating PIT-tag IDs
 
 -----------------------------------------
-FILE "Flocks_BirdInfo.Rdata"
+FILE "Flocks_NBDA_BirdInfo.Rds"
 -----------------------------------------
-
 This dataframe contains information about birds formatted for use as individual-level variables in NBDA analysis.  This is used with the "Flocks_NBDA.R" script.  This file only contains birds that were present in the social networks.
 			- 'RFID'          : PIT-tag IDs of birds 
-			- 'BirdID'		  : unique bird ID used in database management
 			- 'Target'        : assigned target feeder 
-			- 'AssignmentType': assignment type; 'split = 0, flock' = 1, 'both' = NA
+			- 'AssignmentType': assignment type; 'split = 0, flock' = 1
 			- 'Elevation'	  : high elevation = 0, low elevation = 1
-			- 'Age'			  : juvenile = 0, adult or unknown = 1
 			- 'MemScore'	  : mean number of location errors in the first 20 trials of spatial learning and memory testing
 			- 'MemScoreStd'   : 'MemScore' standardized to mean 0, SD 1
-			- 'RevScore'	  : Mean number of location errors in the first 20 trials of reversal learning testing
-			- 'RevScoreStd'   : 'RevScore' standardized to mean 0, SD 1
+			- 'H.Split', 'L.Split', 'H.Flock', 'L.Flock': the four elevation * treatment types possible. 1 indicates that the bird was tested at the given elevation and treatment.
+
+
+-----------------------------------------
+FILE "Flocks_NBDA_Visitation.Rds"
+-----------------------------------------
+This dataframe contains feeder visitation data of PIT-tagged birds to the feeder during the flock learning experiment, formatted for NBDA analysis
+			- 'RFID'          : PIT-tag IDs of birds 
+			- 'Date'		  : date of visit, ymd format
+			- 'Time'		  : time of visit, hms format
+			- 'FeederID'	  : ID of unique feeder within the array. First two characters indicate elevation and array identity, final character indicates the feeder number within the array.
+			- 'Correct'		  : 1 indicates the bird visited its assigned feeder and was rewarded, 0 indicates it was not
+			- 'DaylightElapsed': Time elapsed (in seconds) since the feeder was activated, not counting nighttime
+
+-----------------------------------------
+SCRIPT "Flocks_NBDA_GetFirstVisits.R"
+-----------------------------------------
+This script creates order-of-acquisition and time-of-acquisition vectors for each feeder discovery diffusion.
 			- 'Loc.1H', 'Loc.3H', 'Loc.3L', 'Loc.8L': array where the bird was present; 1 indicates that the bird was present at the given array
 			- 'H.Split', 'L.Split', 'H.Flock', 'L.Flock': the four elevation * treatment types possible. 1 indicates that the bird was tested at the given elevation and treatment.
