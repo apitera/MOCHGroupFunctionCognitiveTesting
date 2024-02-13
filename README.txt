@@ -170,7 +170,7 @@ FILE "Flocks_NBDA_BirdInfo.Rds"
 -----------------------------------------
 This dataframe contains information about birds formatted for use as individual-level variables in NBDA analysis.  This is used with the "Flocks_NBDA.R" script.  This file only contains birds that were present in the social networks.
 			- 'RFID'          : PIT-tag IDs of birds 
-			- 'Target'        : assigned target feeder 
+			- 'Target'        : assigned array and target feeder 
 			- 'AssignmentType': assignment type; 'split = 0, flock' = 1
 			- 'Elevation'	  : high elevation = 0, low elevation = 1
 			- 'MemScore'	  : mean number of location errors in the first 20 trials of spatial learning and memory testing
@@ -183,15 +183,13 @@ FILE "Flocks_NBDA_Visitation.Rds"
 -----------------------------------------
 This dataframe contains feeder visitation data of PIT-tagged birds to the feeder during the flock learning experiment, formatted for NBDA analysis
 			- 'RFID'          : PIT-tag IDs of birds 
-			- 'Date'		  : date of visit, ymd format
-			- 'Time'		  : time of visit, hms format
+			- 'Date'	  : date of visit, ymd format
+			- 'Time'	  : time of visit, hms format
 			- 'FeederID'	  : ID of unique feeder within the array. First two characters indicate elevation and array identity, final character indicates the feeder number within the array.
-			- 'Correct'		  : 1 indicates the bird visited its assigned feeder and was rewarded, 0 indicates it was not
+			- 'Correct'	  : 1 indicates the bird visited its assigned feeder and was rewarded, 0 indicates it was not
 			- 'DaylightElapsed': Time elapsed (in seconds) since the feeder was activated, not counting nighttime
 
 -----------------------------------------
 SCRIPT "Flocks_NBDA_GetFirstVisits.R"
 -----------------------------------------
 This script creates order-of-acquisition and time-of-acquisition vectors for each feeder discovery diffusion.
-			- 'Loc.1H', 'Loc.3H', 'Loc.3L', 'Loc.8L': array where the bird was present; 1 indicates that the bird was present at the given array
-			- 'H.Split', 'L.Split', 'H.Flock', 'L.Flock': the four elevation * treatment types possible. 1 indicates that the bird was tested at the given elevation and treatment.
