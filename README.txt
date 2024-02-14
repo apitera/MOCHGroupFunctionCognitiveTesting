@@ -177,6 +177,14 @@ This dataframe contains information about birds formatted for use as individual-
 			- 'MemScoreStd'   : 'MemScore' standardized to mean 0, SD 1
 			- 'H.Split', 'L.Split', 'H.Flock', 'L.Flock': the four elevation * treatment types possible. 1 indicates that the bird was tested at the given elevation and treatment.
 
+-----------------------------------------
+FILE "Flocks_NBDA_Vectors.Rds"
+-----------------------------------------
+Intermediate file containing objects used for NBDA analysis.
+			- 'orderAqList'   	: List of vectors, one for each feeder.  Contain the order in which birds (identified by matrix index) first visited their assigned feeder.
+			- 'timeAqList'    	: List of vectors, one for each feeder.  Contain the elapsed time (in seconds) between feeder activation and each bird's first visit.
+			- 'lastTimeList'    	: List of vectors, one for each feeder.  Contain the elapsed time (in seconds) between feeder activation and each bird's last visit.
+			- 'presenceMatrixList '	: List of matrices, one for each feeder.  Each indicates which birds are assigned to that feeder, and therefore which birds coud participate in diffusion.
 
 -----------------------------------------
 FILE "Flocks_NBDA_Visitation.Rds"
@@ -193,3 +201,8 @@ This dataframe contains feeder visitation data of PIT-tagged birds to the feeder
 SCRIPT "Flocks_NBDA_GetFirstVisits.R"
 -----------------------------------------
 This script creates order-of-acquisition and time-of-acquisition vectors for each feeder discovery diffusion.
+
+-----------------------------------------
+SCRIPT "Flocks_NBDA.R"
+-----------------------------------------
+This script creates runs the NBDA.
