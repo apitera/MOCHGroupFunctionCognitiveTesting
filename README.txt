@@ -187,7 +187,7 @@ Intermediate file containing objects used for NBDA analysis.
 			- 'presenceMatrixList '	: List of matrices, one for each feeder.  Each indicates which birds are assigned to that feeder, and therefore which birds coud participate in diffusion.
 
 -----------------------------------------
-FILE "Flocks_NBDA_Visitation.Rds"
+FILE "Flocks_NBDA_Visitation.Rdata"
 -----------------------------------------
 This dataframe contains feeder visitation data of PIT-tagged birds to the feeder during the flock learning experiment, formatted for NBDA analysis
 			- 'RFID'          : PIT-tag IDs of birds 
