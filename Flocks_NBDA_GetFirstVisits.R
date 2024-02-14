@@ -76,21 +76,6 @@ for (i in 1:length(feederNames)) {
   lastTimeList[[label]] = last_time_vector_get(firstVisits, feederNames[i])
 }
 
-# Get ties
-# numeric binary vector specifying if each acquisition was "tied" with the acquisition before. 
-# e.g. c(0,1,1,0,0,1,1) specifies that events 2 and 3 are tied, as are events 6 and 7. 
-# Events should be specified as ties if they occurred too close in time for the individuals in question to have plausibly have learned from one another
-# E.g. if two birds first discover the feeder at the same time, they probably moved in as a flock and we can't say if they learned from each other 
-tieTime = 180  # 3 minutes
-tieTimeList = list()
-
-names = names(timeAqList)
-for (i in 1:length(names)) {
-  tievect = ifelse(timeAqList[[names[i]]] - lag(timeAqList[[names[i]]], 1) < tieTime, 1, 0)
-  tievect[1] = 0
-  tieTimeList[[names[i]]] = tievect
-}
-
 # Get presence matrix
 # Should specify which birds are available 
 # e.g. birds at low are not available for diffusion that happened at high, and vice versa 
@@ -113,6 +98,6 @@ for (i in 1:length(names)) {
   presenceMatrixList[[names[i]]] = presMat
 }
 
-save(feederNames, orderAqList, timeAqList, lastTimeList, tieTimeList, presenceMatrixList, 
+save(orderAqList, timeAqList, lastTimeList, presenceMatrixList, 
      file = paste0(dat.path, "Flocks_NBDA_Vectors.Rdata"))
 
