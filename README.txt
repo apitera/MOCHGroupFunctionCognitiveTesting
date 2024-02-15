@@ -205,4 +205,9 @@ This script creates order-of-acquisition and time-of-acquisition vectors for eac
 -----------------------------------------
 SCRIPT "Flocks_NBDA.R"
 -----------------------------------------
-This script creates runs the NBDA.
+This script includes setting up the NBDA models, getting AIC tables, and obtaining model-averaged estimates for ILVs
+
+-----------------------------------------
+SCRIPT "Flocks_NBDA_GetILVsForAveraging.R"
+-----------------------------------------
+Some ILVs returned NAs when calculated in the AIC table; these models had to be run individually to retrieve them.
