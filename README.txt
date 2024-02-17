@@ -164,3 +164,50 @@ Below are brief descriptions of the objects contained in this file:
 
 
 -new.old.ids - a dataframe of the new and old PIT-tag IDs as of 05 Sept. 2020 to be used for updating PIT-tag IDs
+
+-----------------------------------------
+FILE "Flocks_NBDA_BirdInfo.Rds"
+-----------------------------------------
+This dataframe contains information about birds formatted for use as individual-level variables in NBDA analysis.  This is used with the "Flocks_NBDA.R" script.  This file only contains birds that were present in the social networks.
+			- 'RFID'          : PIT-tag IDs of birds 
+			- 'Target'        : assigned array and target feeder 
+			- 'AssignmentType': assignment type; 'split = 0, flock' = 1
+			- 'Elevation'	  : high elevation = 0, low elevation = 1
+			- 'MemScore'	  : mean number of location errors in the first 20 trials of spatial learning and memory testing
+			- 'MemScoreStd'   : 'MemScore' standardized to mean 0, SD 1
+			- 'H.Split', 'L.Split', 'H.Flock', 'L.Flock': the four elevation * treatment types possible. 1 indicates that the bird was tested at the given elevation and treatment.
+
+-----------------------------------------
+FILE "Flocks_NBDA_Vectors.Rds"
+-----------------------------------------
+Intermediate file containing objects used for NBDA analysis.
+			- 'orderAqList'   	: List of vectors, one for each feeder.  Contain the order in which birds (identified by matrix index) first visited their assigned feeder.
+			- 'timeAqList'    	: List of vectors, one for each feeder.  Contain the elapsed time (in seconds) between feeder activation and each bird's first visit.
+			- 'lastTimeList'    	: List of vectors, one for each feeder.  Contain the elapsed time (in seconds) between feeder activation and each bird's last visit.
+			- 'presenceMatrixList '	: List of matrices, one for each feeder.  Each indicates which birds are assigned to that feeder, and therefore which birds coud participate in diffusion.
+
+-----------------------------------------
+FILE "Flocks_NBDA_Visitation.Rdata"
+-----------------------------------------
+This dataframe contains feeder visitation data of PIT-tagged birds to the feeder during the flock learning experiment, formatted for NBDA analysis
+			- 'RFID'          : PIT-tag IDs of birds 
+			- 'Date'	  : date of visit, ymd format
+			- 'Time'	  : time of visit, hms format
+			- 'FeederID'	  : ID of unique feeder within the array. First two characters indicate elevation and array identity, final character indicates the feeder number within the array.
+			- 'Correct'	  : 1 indicates the bird visited its assigned feeder and was rewarded, 0 indicates it was not
+			- 'DaylightElapsed': Time elapsed (in seconds) since the feeder was activated, not counting nighttime
+
+-----------------------------------------
+SCRIPT "Flocks_NBDA_GetFirstVisits.R"
+-----------------------------------------
+This script creates order-of-acquisition and time-of-acquisition vectors for each feeder discovery diffusion.
+
+-----------------------------------------
+SCRIPT "Flocks_NBDA.R"
+-----------------------------------------
+This script includes setting up the NBDA models, getting AIC tables, and obtaining model-averaged estimates for ILVs
+
+-----------------------------------------
+SCRIPT "Flocks_NBDA_GetILVsForAveraging.R"
+-----------------------------------------
+Some ILVs returned NAs when calculated in the AIC table; these models had to be run individually to retrieve them.
