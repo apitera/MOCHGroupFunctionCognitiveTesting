@@ -73,10 +73,34 @@ FILE "Flocks_TestingResults.RData"
 -----------------------------------------
 This file contains cognitive testing performance data
 
-this file contains the following objects (data frames): 
+This file contains the following objects (data frames): 
 	- longTestingResults -- long data format of 'TestingResults'
 	- TestingResults
-	
+
+Column descriptions:
+-TestingResults:
+	"BirdID"   - a bird's unique ID           
+	"Elevation" - either high (H) or low (L)         
+	"ArrayAssigned"  - ID of the feeder array each bird tested at       
+	"AssignmentType" - Type of assignment group each bird was in for the social learning task    
+	"FL.3.LocErr"    - mean # location errors per trial over the first 3 trials of the social learning task   
+	"FL.5.LocErr"    - mean # location errors per trial over the first 5 trials of the social learning task     
+	"FL.10.LocErr" - mean # location errors per trial over the first 10 trials of the social learning task 
+	"FL.20.LocErr" - mean # location errors per trial over the first 20 trials of the social learning task  
+	"I.20.LocErr"  - mean # location errors per trial over the first 20 trials of the spatial learning & memory task         
+	"I.TotTrials" - total number of trials completed by each bird during the spatial learning & memory task       	"NestedArrayAssigned" - redefined feeder array names to allow array to be nested within elevation in LMMs
+	"plot.asst" - hacky column used in making figures          
+	"plot.elev" - hacky definition of elevation names used for making figures
+	"plot.color" - colors used in figures
+
+-longTestingResults:
+	"BirdID" - a bird's unique ID 
+	"Elevation" - either high (H) or low (L)       
+	"AssignmentType" - Type of assignment group each bird was in for the social learning task 
+	"ArrayAssigned"  - ID of the feeder array each bird tested at 
+	"nTrials"    - number of trials at which performance is being estimated    
+	"MeanLocErr"	- mean # location errors per trial over the first X (nTrials) number of trials     
+	"NumericTrial" - numeric value for nTrials used for plotting
 
 
 -----------------------------------------
@@ -85,12 +109,38 @@ FILE "Flocks_VisitationData.RData"
 This file contains feeder visitation data of PIT-tagged Mountain Chickadees to RFID-enabled bird feeders
 This is used with the "Flocks_GMMdouble.R" script to produce group by individual matrices and ultimately social networks
 
+This file contains one object: 'in.dat' which is a named list of data frames
+See FILE "GrpLearn_Networks4NBDA.RData" for information on the list names and what they mean
+
+All data frames have the same format and column names:
+	"ID" - PIT-tag ID
+	"Date" - Date of recorded visit in MM/DD/YY format
+	"Time" - Time of visit in HH:MM:SS with a 24 hour clock
+	"Location" - Specific feeder identity where visit was recorded
+	"FeedMode" - feed mode in which the feeder was operating
 
 -----------------------------------------
 FILE "FlockAssignments_2019_20.RData"
 -----------------------------------------
 Feeder assignment data for spatial cognitive testing (used by "Flocks_GMMdouble.R")
 
+This file contains two objects:
+	- birds  --PIT-tag IDs and dates of tagging (used in network creation as the enter time)
+	- flock.targets --Details of which birds were in which flocks and their assignment types etc...
+
+Column descriptions:
+-birds:
+	-"RFID" -- PIT-tag IDs
+	-"sub.toic" -- dates of tagging (used in network creation as the enter time) in YYYYMMDD format
+
+-flock.targets:
+	-"RFID" - PIT-tag IDs
+	"Elevation" - either high (H) or low (L)    
+	"Array"  - ID of the feeder array each bird tested at  
+	"Flock"   - arbitrary numbering system for flock membership
+	"Target"  - "target" feeder ID used during the social learning task       
+	"AssignmentType" - assignment treatment each bird was in during the social learning task where "flock" == the flock treatment and "split" == the individual treatment
+	
 
 
 -----------------------------------------
