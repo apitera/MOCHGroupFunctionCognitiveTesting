@@ -6,7 +6,8 @@ SCRIPTS:-------------------------
 "Flocks_GMMdouble.R"
 "Flocks_LM_Analysis.R"
 "Flocks_LM_Figures.R"
-
+"Flocks_NBDA_GetFirstVisits.R"
+"Flocks_NBDA_GetILVsForAveraging.R"
 
 FILES:---------------------------
 "Flocks_VisitationData.RData"
@@ -14,7 +15,9 @@ FILES:---------------------------
 "GrpLearn_GbisMetas.RData"
 "GrpLearn_Networks4NBDA.RData"
 "Flocks_TestingResults.RData"
-
+"Flocks_NBDA_BirdInfo.Rds"
+"Flocks_NBDA_Vectors.Rds"
+"Flocks_NBDA_Visitation.Rdata"
 
 
 
@@ -24,7 +27,6 @@ SCRIPTS
 ============================================================================================
 ============================================================================================
 
-
 -----------------------------------------
 SCRIPT: "Flocks_GMMdouble.R"
 -----------------------------------------
@@ -32,7 +34,30 @@ Runs a double Gaussian Mixture Model on automated feeder visitation data to iden
 Returns group by individual matrices and their associated metadata
 Calculates three types of social networks used in network-based diffusion analysis (NBDA)
 
+-----------------------------------------
+SCRIPT: "Flocks_LM_Analysis.R"
+-----------------------------------------
+Linear mixed-effects models testing for relationships between assignment type during the social information task and performance on the task. 
 
+-----------------------------------------
+SCRIPT: "Flocks_LM_Figures.R"
+-----------------------------------------
+Code used to create Figures 1 & 2.
+
+-----------------------------------------
+SCRIPT "Flocks_NBDA_GetFirstVisits.R"
+-----------------------------------------
+This script creates order-of-acquisition and time-of-acquisition vectors for each feeder discovery diffusion.
+
+-----------------------------------------
+SCRIPT "Flocks_NBDA.R"
+-----------------------------------------
+This script includes setting up the NBDA models, getting AIC tables, and obtaining model-averaged estimates for ILVs
+
+-----------------------------------------
+SCRIPT "Flocks_NBDA_GetILVsForAveraging.R"
+-----------------------------------------
+Some ILVs returned NAs when calculated in the AIC table; these models had to be run individually to retrieve them.
 
 
 
@@ -48,10 +73,9 @@ FILE "Flocks_TestingResults.RData"
 -----------------------------------------
 This file contains cognitive testing performance data
 
-this file contains the following objects: 
-	- longTestingResults
+this file contains the following objects (data frames): 
+	- longTestingResults -- long data format of 'TestingResults'
 	- TestingResults
-	
 	
 
 
@@ -63,7 +87,7 @@ This is used with the "Flocks_GMMdouble.R" script to produce group by individual
 
 
 -----------------------------------------
-"FlockAssignments_2019_20.RData"
+FILE "FlockAssignments_2019_20.RData"
 -----------------------------------------
 Feeder assignment data for spatial cognitive testing (used by "Flocks_GMMdouble.R")
 
@@ -197,17 +221,3 @@ This dataframe contains feeder visitation data of PIT-tagged birds to the feeder
 			- 'Correct'	  : 1 indicates the bird visited its assigned feeder and was rewarded, 0 indicates it was not
 			- 'DaylightElapsed': Time elapsed (in seconds) since the feeder was activated, not counting nighttime
 
------------------------------------------
-SCRIPT "Flocks_NBDA_GetFirstVisits.R"
------------------------------------------
-This script creates order-of-acquisition and time-of-acquisition vectors for each feeder discovery diffusion.
-
------------------------------------------
-SCRIPT "Flocks_NBDA.R"
------------------------------------------
-This script includes setting up the NBDA models, getting AIC tables, and obtaining model-averaged estimates for ILVs
-
------------------------------------------
-SCRIPT "Flocks_NBDA_GetILVsForAveraging.R"
------------------------------------------
-Some ILVs returned NAs when calculated in the AIC table; these models had to be run individually to retrieve them.
